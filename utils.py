@@ -10,8 +10,6 @@ def check_num(prev, cur, iteration):
     # returns false if current number is further
     elif abs(prev-num) < abs(cur-num):
         return False
-    # if they are equal returns true still [edge case]
-    else: return True
 
 def arr_index_finder(arr):
     # define arr of indecies that work
@@ -23,5 +21,9 @@ def arr_index_finder(arr):
     for i, el in enumerate(arr[1:], start=1):
         prev = curr
         curr = el
-        if check_num(prev, curr, 1):
-            print()
+        if not check_num(prev, curr, iteration):
+            indexArr.append(i-1)
+            # print("added at index:", i-1)
+            print("added value: ", prev)
+            iteration += 1
+    return indexArr
